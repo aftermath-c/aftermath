@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AftermathCHITAKI</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        body {
+            background: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        /* Шапка */
+        header {
+            background: #1a1a1a;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 50px;
+            border-radius: 5px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: #4CAF50;
+            font-weight: 800;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: #a0a0a0;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #4CAF50;
+            background: rgba(76, 175, 80, 0.1);
+        }
+        
+        /* Главный экран */
+        .hero {
+            background: url('https://cdn.discordapp.com/attachments/1168627391199985734/1390090344397537422/image.png?ex=6866fe04&is=6865ac84&hm=b928017f128ab6e293a4dee4139b5fb288046c2d3118a1f0d55f991e17c43a27&') no-repeat center/cover;
+            height: 70vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #eee;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-right: 10px;
+        }
+        
+        .btn2 {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            margin-right: 10px;
+        }
+        
+        .btn:hover {
+            background: #3e8e41;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+        }
+        
+        /* Секции */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #4CAF50;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: #4CAF50;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Локации */
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .location-card {
+            background: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: all 0.3s;
+        }
+        
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.1);
+            border-color: #4CAF50;
+        }
+        
+        .location-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .location-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .location-card:hover .location-img img {
+            transform: scale(1.1);
+        }
+        
+        .location-info {
+            padding: 20px;
+        }
+        
+        .location-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #4CAF50;
+        }
+        
+        .loot-list {
+            margin-top: 15px;
+            padding-left: 20px;
+            color: #a0a0a0;
+        }
+        
+        .loot-list li {
+            margin-bottom: 5px;
+        }
+        
+        /* Кнопка перехода к карте */
+        .map-btn {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        /* Карта */
+        .map-container {
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .map-container img {
+            max-width: 100%;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+        
+        /* Страница с оружием */
+        .weapons-page {
+            display: none;
+            padding: 80px 0;
+            opacity: 0;
+   
+        }
+        
+        .weapons-page.active {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .weapons-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .weapons-category {
+            margin-bottom: 50px;
+        }
+        
+        .weapons-category h3 {
+            color: #4CAF50;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        
+        .weapons-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .weapon-item {
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+        
+        .weapon-item h4 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .back-btn:hover {
+            background: #3e8e41;
+        }
+        
+        /* Футер */
+        footer {
+            background: #121212;
+            padding: 60px 0 20px;
+            border-top: 1px solid #333;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #4CAF50;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            color: #fff;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: #4CAF50;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        /* Адаптив */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .hero {
+                height: 60vh;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+                font-size: 1.5rem;
+                color: #e0e0e0;
+                cursor: pointer;
+            }
+        }
+
+        @keyframes fadeInUp {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.weapons-page.enter {
+    animation: fadeInUp 0.5s ease forwards;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://cdn.discordapp.com/attachments/1168627391199985734/1389948326094438421/image.png?ex=68672280&is=6865d100&hm=0c1dec3bdff8c2dd3c8ec689cd3ef22cfbcebd439f26289a4f066a82a9009d3c&" alt="Aftermath Logo">
+                <h1>Aftermath</h1>
+            </div>
+            <div class="menu-toggle">☰</div>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="showPage('main')">Главная</a></li>
+                    <li><a href="#" onclick="showPage('weapons')">Оружие (72)</a></li>
+                    <li><a href="#" onclick="scrollToMap()">Карта</a></li>
+                    <li><a href="#" onclick="showPage('pvp')">ПВП</a></li>
+                    <li><a href="#" onclick="showPage('memes')">Мемы</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главная страница -->
+    <div id="main-page" class="fade-in">
+        <section class="hero">
+            <div class="container hero-content">
+                <h2>Aftermath в Roblox</h2>
+                <p>Жесткий PvP-экшен, где ты либо становишься королём бомжей, либо тебя отпиздошит махмуд с неба.</p>
+                <a href="https://www.roblox.com/games/15327728308/SALE-Aftermath" class="btn2" target="_blank">ГЕЙМ</a>
+                <a href="#" onclick="showPage('weapons')" class="btn" style="background: #333;">Гайд по пушкам</a>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Что такое Aftermath?</h2>
+                </div>
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <p style="font-size: 1.1rem; margin-bottom: 30px;">
+                        Aftermath — это симулятор получения пиздов на парадайсе от американцев, симулятор летающих манан, бобкатов, и давидов с АВМами, симулятор вечной рвоты от ДЕРТИ ВОТЕР, рандомных капканов посреди нихуя и сквада из 20 ебальников бегущих в твою сторону.
+                    </p>
+                    <img src="https://media.discordapp.net/attachments/1168627391199985734/1390081292057706516/image.png?ex=6866f596&is=6865a416&hm=807569cdc6d9701cc0f1a53aad660c375d288975c81b252d9dece7d826ea9ae7&=&format=webp&quality=lossless&width=1607&height=904" alt="Aftermath Gameplay" style="width: 100%; border-radius: 8px; margin-bottom: 30px; border: 1px solid #333;">
+                    <p style="font-size: 1.1rem;">
+                        Игра известна тем, что даже будучи перекачем с фулл рашене с бареткой, тебя может отпиздить бомж с чамлайтом
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="locations" class="locations-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Места где ты проебешь свой чамлайт и апельсин из инвентаря</h2>
+                    <p style="color: #aaa; margin-top: 10px;">Превратившись в мешок</p>
+                </div>
+                <div class="map-btn">
+                    <a href="#" onclick="scrollToMap()" class="btn">Посмотреть карту</a> 
+                </div>
+                <div class="locations-grid">
+                    <!-- парадайс -->
+                    <div class="location-card">
+                        <div class="location-img">
+                            <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/0/06/PARADISE-NEW.png" alt="ПАРАДИС">
+                        </div>
+                        <div class="location-info">
+                            <h3>ПАРАДИС</h3>
+                            <p>Самаяя опасная зона с 2308472934763284673 америкосами в одном доме. На фулл серваке ночью там ваще песня.</p>
+                            <ul class="loot-list">
+                                <p>Лут:</p>
+                                <li>Пиздюли</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- алмоста -->
+                    <div class="location-card">
+                        <div class="location-img">
+                            <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/b/bc/ALMOSTA-NEW.png" alt="алмоста">
+                        </div>
+                        <div class="location-info">
+                            <h3>АЛМОСТА</h3>
+                            <p>Почти тоже самое, раньше не имел популярности вообще.</p>
+                            <ul class="loot-list">
+                                <p>Лут:</p>
+                                <li>опиздюливание чунь меньшего масштаба</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- кемпинг -->
+                    <div class="location-card">
+                        <div class="location-img">
+                            <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/e/ea/CAMP-NEW.png" alt="кемпинг">
+                        </div>
+                        <div class="location-info">
+                            <h3>КЕМПИНГ</h3>
+                            <p>Хуета бесполезная честно</p>
+                            <ul class="loot-list">
+                                <p>Лут:</p>
+                                <li>Луки</li>
+                                <li>мп133</li>
+                                <li>ДАБЛЕБАРЕ</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Шаблоны для заполнения (17 новых локаций) -->
+                    <div class="location-card">
+                        <div class="location-img">
+                            <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/5/54/AIRFIELD-NEW.png" alt="Название локации">
+                        </div>
+                        <div class="location-info">
+                            <h3>АИРФИЛД</h3>
+                            <p>Главный квест - зайти на нее, ибо с вероятностью 900% на тавере сидит уебан с м40.</p>
+                            <ul class="loot-list">
+                                <p>Лут:</p>
+                                <li>Камо шмот</li>
+                                <li>Гили шмот</li>
+                                <li>Рюкзак</li>
+                                <li>Пулемет</li>
+                                <li>Скарка</li>
+                                <li>м40</li>
+                                <li>Мулпак</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="location-card">
+                        <div class="location-img">
+                            <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/d/d0/QUARRY-NEW.png" alt="Название локации">
+                        </div>
+                        <div class="location-info">
+                            <h3>КВАРИ</h3>
+                            <p>После обновы - ПОЛНАЯ ХУЕТА ЕВЕР. Но лут присутсвутет.</p>
+                            <ul class="loot-list">
+                                <p>Лут:</p>
+                                <li>spas</li>
+                                <li>mossberg</li>
+                                <li>Камо шмот</li>
+                                <li>Скарка</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Еще 15 аналогичных блоков -->
+                    <div class="location-card">
+                        <div class="location-img">
+                            <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/2/23/SURVIVAL-CAMP-NEW.png" alt="Название локации">
+                        </div>
+                        <div class="location-info">
+                            <h3>SURVIVOR CAMP</h3>
+                            <p>Встречаются в основном бомжи, лут средний - 2 честа, в основном патроны и пистолеты</p>
+                            <ul class="loot-list">
+                                <p>Лут:</p>
+                                <li>Патроны разного калибра</li>
+                                <li>Дигл</li>
+                                <li>магнум</li>
+                                <li>ТАКЕДАУН</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="location-card">
+                        <div class="location-img">
+                            <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/2/2e/PRISON-NEW.png" alt="Название локации">
+                        </div>
+                        <div class="location-info">
+                            <h3>ПРИСОН</h3>
+                            <p>"ДАВНО МЫ НА ПРИСОНЕ НЕ БЫЛИ. ГО ТУДА, ТАМ НИКОГО."</p>
+                            <ul class="loot-list">
+                                <p>Лут:</p>
+                                <li>Выстрел с мосберга в ебло</li>
+                                <li>патроны разного калибра</li>
+                                <li>пистолеты</li>
+                                <li>Шанс бронежилета в кабинете директора</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="location-card">
+                        <div class="location-img">
+                            <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/b/b8/RADIO-NEW.png" alt="Название локации">
+                        </div>
+                        <div class="location-info">
+                            <h3>РАДИО ТАВЕР</h3>
+                            <p>Раньше был имбой, щас добавили болье лута, но как точка пвп - хуйня теперь</p>
+                            <ul class="loot-list">
+                                <p>Лут:</p>
+                                <li>Пулик</li>
+                                <li>Скарка</li>
+                                <li>Патроны разного калибра</li>
+                                <li>м40</li>
+                                <li>ump-45</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="location-card">
+                        <div class="location-img">
+                            <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/3/34/FLAT-NEW.png" alt="Название локации">
+                        </div>
+                        <div class="location-info">
+                            <h3>ФЛАТПИК</h3>
+                            <p>Точка рядом с радио тавером, частое место где происходит пвп. Основные точки - зеленый дом, амбар.</p>
+                            <ul class="loot-list">
+                                <p>Лут:</p>
+                                <li>патроны разного калибра</li>
+                                <li>ремингтон</li>
+                                <li>пуля в ебло с вышки</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="location-card">
+                        <div class="location-img">
+                            <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/e/e9/INDUSTRIAL-NEW.png" alt="Название локации">
+                        </div>
+                        <div class="location-info">
+                            <h3>ИНДАСТРИАЛ</h3>
+                            <p>Даже сказать нечего, мега бесполезнейая хуйня</p>
+                            <ul class="loot-list">
+                                <p>Лут:</p>
+                                <li>НИКАКОЙ БЛЯТЬ</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="location-card">
+                        <div class="location-img">
+                            <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/7/7d/CHESTNUT-NEW.png" alt="Название локации">
+                        </div>
+                        <div class="location-info">
+                            <h3>ЧЕСНОК</h3>
+                            <p>В целом бесполезно, за исключением зеленого дома в нем</p>
+                            <ul class="loot-list">
+                                <p>Лут:</p>
+                                <li>Патроны разного калибра</li>
+                                <li>Пистолеты</li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="location-card">
+                        <div class="location-img">
+                            <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/b/b0/SHELTER-NEW.png" alt="Название локации">
+                        </div>
+                        <div class="location-info">
+                            <h3>БОМБ ШЕЛТЕР</h3>
+                            <p>Высок шанс получить пизды, по луту как зеленый дом, но т.к это отдельная лока, пвп присутсвутет. Раньше рядом лежат вертолет с лутом.</p>
+                            <ul class="loot-list">
+                                <p>Лут:</p>
+                                <li>Патроны разного калибра</li>
+                                <li>Пистолеты</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="location-card">
+                        <div class="location-img">
+                            <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/5/52/NEW-HAVEN-NEW.png" alt="Название локации">
+                        </div>
+                        <div class="location-info">
+                            <h3>НЮ ХАВЕН</h3>
+                            <p>Новая лока, хуй знает че по луту пока что.</p>
+                            <ul class="loot-list">
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="location-card">
+                        <div class="location-img">
+                            <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/8/80/REDFIELD.png" alt="Название локации">
+                        </div>
+                        <div class="location-info">
+                            <h3>РЕДФИЛД</h3>
+                            <p>По сути нихуя нет кроме кавчика в палатке, больницы где есть аптечки и зеленого дома. Обычно какого то хуя там существуют америкосы.</p>
+                            <ul class="loot-list">
+                                <p>Лут:</p>
+                                <li>Зеленый дом</li>
+                                <li>Медкиты</li>
+                                <li>Патроны разного калибра</li>
+                                <li>Шанс на глок</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="location-card">
+                        <div class="location-img">
+                            <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/9/9d/SAWMILL-NEW.png" alt="Название локации">
+                        </div>
+                        <div class="location-info">
+                            <h3>СОУМИЛ</h3>
+                            <p>По сути нихуя нет и находится в сраке</p>
+                            <ul class="loot-list">
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="location-card">
+                        <div class="location-img">
+                            <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/6/63/NUCLEAR-NEW.png" alt="Название локации">
+                        </div>
+                        <div class="location-info">
+                            <h3>ПАВЕРПЛЕНТ</h3>
+                            <p>Пердеж антона, без хазмата идти смысла нет, да и с ним тоже.</p>
+                            <ul class="loot-list">
+                                <p>Лут:</p>
+                                <li>0.3% шанс баретки</li>
+                                <li>Патроны разного калибра</li>
+                                <li>Пулемет</li>
+                                <li>Броник</li>
+                                <li>x2 шлемак</li>
+                                <li>Скарка</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="location-card">
+                        <div class="location-img">
+                            <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/7/7b/PINE-NEW.png" alt="Название локации">
+                        </div>
+                        <div class="location-info">
+                            <h3>ПАЙНХИЛ</h3>
+                            <p>Не ебу че там ваще</p>
+                            <ul class="loot-list">
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="location-card">
+                        <div class="location-img">
+                            <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/8/86/BUNKER-NEW.png" alt="Название локации">
+                        </div>
+                        <div class="location-info">
+                            <h3>РАШЕН БУНКЕР</h3>
+                            <p>На карте не помечен, но находится в квадрате А9 Имеет самый лучший лут, и ботов сопротивления.</p>
+                            <ul class="loot-list">
+                                <p>Лут:</p>
+                                <li>30% шанс баретки</li>
+                                <li>пм</li>
+                                <li>акм</li>
+                                <li>Патроны разного калибра</li>
+                                <li>Бронежилет</li>
+                                <li>Мулпак</li>
+                                <li>Дуфлбаг</li>
+                                <li>АВМ</li>
+                                <li>Пулемет</li>
+                                <li>Атланка(не уверен)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="location-card">
+                        <div class="location-img">
+                            <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/5/54/CRESCENT-GROVE-NEW.png" alt="Название локации">
+                        </div>
+                        <div class="location-info">
+                            <h3>CRESCENT GROVE</h3>
+                            <p>хуй знает че это ваще</p>
+                            <ul class="loot-list">
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    
+                </div>
+
+            </div>
+        </section>
+
+        <section id="pvp" class="pvp-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>ПВП и тактики</h2>
+                    <p style="color: #aaa; margin-top: 10px;">Как не превратится в ебаный мешочек</p>
+                </div>
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div style="background: #1a1a1a; padding: 30px; border-radius: 8px; border: 1px solid #333; margin-bottom: 30px;">
+                        <h3 style="color: #4CAF50; margin-bottom: 15px; font-size: 1.4rem;">Основы PvP</h3>
+                        <p style="margin-bottom: 15px;">Aftermath — это 90% получение пиздов и 10% стрельбы. Даже с топовым оружием ты умрешь, если не имеешь скила высматривать ебаные пиксели за 23463294623847км</p>
+                        <p style="margin-bottom: 15px;">Основные правила:</p>
+                        <ul style="margin-left: 20px; margin-bottom: 15px;">
+                            <li>достаточно не быть керелом и как миниму знать о существовании третьего лица сука.</li>
+                        </ul>
+                        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 5px;">
+                            <iframe 
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+                                src="https://cdn.discordapp.com/attachments/887389027253239864/1390140086448029816/0703.gif?ex=68672c58&is=6865dad8&hm=df44137155b0d7f3d44ee3d745e5155b07c7e15ea251bc177627fafdf1e7dcc4&" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    
+                    <div style="background: #1a1a1a; padding: 30px; border-radius: 8px; border: 1px solid #333;">
+                        <h3 style="color: #4CAF50; margin-bottom: 15px; font-size: 1.4rem;">МАНАНЫ</h3>
+                        <p style="margin-bottom: 15px;">Машины в Aftermath — это не только способ передвижения, но и оружие. Если тип подрубит флай на манане, серваку пизда и все начнут лагать, что естес ему на руку.</p>
+                        <h4 style="color: #4CAF50; margin: 15px 0 10px;">Два основных типа:</h4>
+                        <h5 style="color: #4CAF50; margin: 10px 0;">МАНАНЫ:</h5>
+                        <ul style="margin-left: 20px; margin-bottom: 15px;">
+                            <li>Обычный седанчик (красная хуетень)</li>
+                            <li>таксишная манана(тоже самое по сути)</li>
+                            <li>Черная полицейская манана(самая быстрая)</li>
+                            <li>Белая полицейская манана(чуть менее быстрая)</li>
+                        </ul>
+                        <h5 style="color: #4CAF50; margin: 10px 0;">БОБКАТЫ(они все одинаковые, отличаются только цветом):</h5>
+                        <ul style="margin-left: 20px;">
+                            <li>Белый</li>
+                            <li>Синий</li>
+                            <li>Красный</li>
+                            <li>Оранжевый</li>
+                            <li>Зеленый</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Карта (перенесена после секции PvP) -->
+        <section id="map" class="map-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Карта Aftermath</h2>
+                </div>
+                <div class="map-container">
+                    <img src="https://cdn.discordapp.com/attachments/1168627391199985734/1390113814141210735/image.png?ex=686713e0&is=6865c260&hm=0115303553cbe6092f727a6aef710f590366f3dd6192a968416feda3721ae437&" alt="Карта Aftermath">
+                </div>
+            </div>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-column">
+                        <h3>Aftermath</h3>
+                        <p style="color: #aaa; margin-bottom: 20px;">Лучший PvP-экшен в Roblox. Выживай, грабь, побеждай.</p>
+                        <div class="social-links">
+                            <a href="#" title="Discord">D</a>
+                            <a href="#" title="Twitter">T</a>
+                            <a href="#" title="YouTube">Y</a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Навигация</h3>
+                        <ul>
+                            <li><a href="#" onclick="showPage('main')">Главная</a></li>
+                            <li><a href="#" onclick="showPage('weapons')">Оружие</a></li>
+                            <li><a href="#" onclick="scrollToMap()">Карта</a></li>
+                            <li><a href="#" onclick="showPage('pvp')">ПВП</a></li>
+                            <li><a href="#" onclick="showPage('memes')">Мемы</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Полезное</h3>
+                        <ul>
+                            <li><a href="https://www.roblox.com/games/15327728308/SALE-Aftermath" target="_blank">Страница игры</a></li>
+                            <li><a href="#" target="_blank">Гайды</a></li>
+                            <li><a href="#" target="_blank">Торговая площадка</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>© 2023 Aftermath Roblox | Неофициальный фанатский сайт</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+   <!-- Страница с оружием -->
+<div id="weapons-page" class="weapons-page">
+    <div class="weapons-container">
+        <h2 style="color: #4CAF50; text-align: center; margin-bottom: 40px; font-size: 2.5rem;">Полный список оружия (72 вида)</h2>
+        
+        <!-- Автоматы -->
+        <div class="weapons-category">
+            <h3>Автоматы</h3>
+            <div class="weapons-list">
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/e/e1/AK-47-NEW.png" alt="мжеж">
+                    <h4>AK-47</h4>
+                    <p>Урон: 35 | Обойма: 30</p>
+                    <p>Оружие админа, хуй получишь.</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/4/41/AR-15-NEW.png" alt="мжеж">
+                    <h4>AР-15</h4>
+                    <p>Урон: 32 | Обойма: 30</p>
+                    <p>ред дот толко не ставь блять.</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/f/fd/MS-2-NEW.png" alt="мжеж">
+                    <h4>Самодельная смг</h4>
+                    <p>Урон: 35(пустая голова)| Обойма: 25</p>
+                    <p>45.АСР</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/7/76/AKM-NEW.png" alt="мжеж">
+                    <h4>АКМ</h4>
+                    <p>Урон: 39(пустая голова)| Обойма: 30</p>
+                    <p>7.62</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/a/ab/M4A1-NEW.png" alt="мжеж">
+                    <h4>М4А1</h4>
+                    <p>Урон: 44(пустая голова) | Обойма: 30</p>
+                    <p>Rem.223</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/e/e4/Famas-NEW.png" alt="мжеж">
+                    <h4>Famas</h4>
+                    <p>Урон: 42(пустая голова) | Обойма: 25</p>
+                    <p>Rem.223</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/f/fb/FN-FAL-FIX.png" alt="мжеж">
+                    <h4>FN-FAL</h4>
+                    <p>Урон: 56(пустая голова) | Обойма: 20</p>
+                    <p>308.win</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/3/3e/G36k-NEW.png" alt="мжеж">
+                    <h4>Г36к</h4>
+                    <p>Урон: 48 | Обойма: 30</p>
+                    <p>Rem.223</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/f/f5/UZI-NEW.png" alt="мжеж">
+                    <h4>УЗИ</h4>
+                    <p>Урон: 28(пустая голова) | Обойма: 32</p>
+                    <p>22.LR</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/f/f5/UMP-NEW.png" alt="мжеж">
+                    <h4>UMP-45</h4>
+                    <p>Урон: 42(пусатя голова) | Обойма: 25</p>
+                    <p>45АСР</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/1/10/P90-NEW.png" alt="мжеж">
+                    <h4>p90</h4>
+                    <p>Урон: 35 | Обойма: 50</p>
+                    <p>Оружие админа, хуй получишь.</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/6/68/MP5-NEW.png" alt="мжеж">
+                    <h4>MP5</h4>
+                    <p>Урон: 35 | Обойма: 30</p>
+                    <p>9mm</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/b/be/SCAR-H-NEW.png" alt="мжеж">
+                    <h4>Scar</h4>
+                    <p>Урон: 64(пусатя голова) | Обойма: 20</p>
+                    <p>308.win</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Винтовки -->
+        <div class="weapons-category">
+            <h3>Винтовки</h3>
+            <div class="weapons-list">
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/b/b2/MOSIN-NEW.png" alt="мжеж">
+                    <h4>Mosin</h4>
+                    <p>Урон: 95(пусатя голова) | Обойма: 5</p>
+                    <p>ШАНСЫ НА МОСИНКУ.</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/3/39/M110k.png" alt="мжеж">
+                    <h4>M110k</h4>
+                    <p>Урон: 87(пусатя голова) | Обойма: 15</p>
+                    <p>308.win.</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/7/77/MK-18.png" alt="мжеж">
+                    <h4>Mk-18</h4>
+                    <p>Урон: 123(пусатя голова) | Обойма: 10</p>
+                    <p>308.win</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/a/a8/MK-14_EBR.png" alt="мжеж">
+                    <h4>МК-14 ЭБР</h4>
+                    <p>Урон: 112(пусатя голова) | Обойма: 15</p>
+                    <p>308.win</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/f/fc/AWM-NEW.png" alt="мжеж">
+                    <h4>AWM</h4>
+                    <p>Урон: 214(пусатя голова) | Обойма: 10</p>
+                    <p>50BMG.</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/2/2a/M40A1-NEW.png" alt="мжеж">
+                    <h4>m40</h4>
+                    <p>Урон: 159(пусатя голова) | Обойма: 5</p>
+                    <p>308.win</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/c/ca/MS-NEW.png" alt="мжеж">
+                    <h4>Самодельная снайпа</h4>
+                    <p>Урон: 127(пусатя голова) | Обойма: 5</p>
+                    <p>308.win</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/2/26/MRAD-NEW.png" alt="мжеж">
+                    <h4>MRAD</h4>
+                    <p>Урон: 214(пусатя голова) | Обойма: 10</p>
+                    <p>50BMG</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/5/5b/M82A1-NEW.png" alt="мжеж">
+                    <h4>Баретка</h4>
+                    <p>Урон: 214(пусатя голова) | Обойма: 10</p>
+                    <p>50.BMG</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/0/0a/R700-NEW.png" alt="мжеж">
+                    <h4>Remington 700</h4>
+                    <p>Урон: 162(пусатя голова) | Обойма: 5</p>
+                    <p>308.win</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/9/92/SKS-NEW.png" alt="мжеж">
+                    <h4>СКС</h4>
+                    <p>Урон: 63(пусатя голова) | Обойма: 10</p>
+                    <p>7.62</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/b/b4/SVD-NEW.png" alt="мжеж">
+                    <h4>СВД</h4>
+                    <p>Урон: 120(пусатя голова) | Обойма: 10</p>
+                    <p>7.62.54</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Дробовики -->
+        <div class="weapons-category">
+            <h3>Дробь</h3>
+            <div class="weapons-list">
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/0/09/DB-NEW.png" alt="мжеж">
+                    <h4>Remington 870</h4>
+                    <p>Урон: дохуя | Обойма: 2</p>
+                    <p>ГАУГЕ</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/f/fb/MP-133-NEW.png" alt="мжеж">
+                    <h4>mp133</h4>
+                    <p>Урон: 15 | Обойма: 6</p>
+                    <p>ГАУГЕ</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/4/4b/MOSSBERG-NEW.png" alt="мжеж">
+                    <h4>Мосберг</h4>
+                    <p>Урон: дохуя | Обойма: 12</p>
+                    <p>ГАУГЕ</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/c/cd/SAWED-OFF-NEW.png" alt="мжеж">
+                    <h4>Обрез</h4>
+                    <p>Урон: дохуище | Обойма: 2</p>
+                    <p>ГАУГЕ</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/b/b4/SAIGA-NEW.png" alt="мжеж">
+                    <h4>Сайга</h4>
+                    <p>Урон: 12 | Обойма: 10</p>
+                    <p>ГАУГЕ</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/8/8b/SPAS-12-NEW.png" alt="мжеж">
+                    <h4>САС</h4>
+                    <p>Урон: 12 | Обойма: 6</p>
+                    <p>ГАУГЕ</p>
+                </div>
+                
+                <div class="weapon-item">
+                    <img src="https://static.wikia.nocookie.net/quarantine-aftermath/images/0/01/Renelli_M4.png" alt="мжеж">
+                    <h4>Remington 870</h4>
+                    <p>Урон: 14 | Обойма: 7</p>
+                    <p>ГАУГЕ</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Пистолеты -->
+        <div class="weapons-category">
+            <h3>Пистолеты</h3>
+            <div class="weapons-list">
+                <div class="weapon-item">
+                    <img src="" alt="мжеж">
+                    <h4>Glock 17</h4>
+                    <p>Урон: 25 | Обойма: 17</p>
+                    <p>Хуета которыю хуй найдешь</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Кнопка назад -->
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="#" onclick="showPage('main')" class="back-btn">← На главную</a>
+        </div>
+    </div>
+</div>
+
+    <script>
+        // Показать нужную страницу
+        function showPage(pageId) {
+            // Скрыть все страницы
+            document.getElementById('main-page').style.display = 'none';
+            document.getElementById('weapons-page').style.display = 'none';
+            
+            // Показать выбранную страницу
+            if (pageId === 'main') {
+                document.getElementById('main-page').style.display = 'block';
+                document.getElementById('main-page').classList.add('fade-in');
+            } else if (pageId === 'weapons') {
+                document.getElementById('weapons-page').style.display = 'block';
+                // Добавляем класс active для плавного появления
+                setTimeout(() => {
+                    document.getElementById('weapons-page').classList.add('active');
+                }, 10);
+            }
+            
+            // Прокрутить вверх
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Плавная прокрутка к карте
+        function scrollToMap() {
+            showPage('main');
+            const mapSection = document.getElementById('map');
+            // Добавляем небольшую задержку перед скроллом, чтобы страница успела показаться
+            setTimeout(() => {
+                mapSection.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }, 100);
+        }
+
+        function showPage(pageId) {
+    // Скрыть все страницы
+    document.getElementById('main-page').style.display = 'none';
+    document.getElementById('weapons-page').style.display = 'none';
+    
+    // Показать выбранную страницу
+    if (pageId === 'main') {
+        document.getElementById('main-page').style.display = 'block';
+        document.getElementById('main-page').classList.add('fade-in');
+        
+        // Анимация выхода для weapons-page
+        document.getElementById('weapons-page').classList.remove('enter');
+        document.getElementById('weapons-page').classList.add('active');
+    } else if (pageId === 'weapons') {
+        document.getElementById('weapons-page').style.display = 'block';
+        
+        // Анимация входа
+        document.getElementById('weapons-page').classList.remove('active');
+        document.getElementById('weapons-page').classList.add('enter');
+    }
+    
+    // Прокрутить вверх
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+        // Мобильное меню
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+        
+        // По умолчанию показать главную страницу
+        showPage('main');
+    </script>
+</body>
+</html>
